@@ -5,10 +5,11 @@ from openai import OpenAI
 
 load_dotenv()
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
+# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-client = OpenAI(api_key=OPENAI_API_KEY)
+# if OPENAI_API_KEY:
+#     os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
+
 
 import fitz
 import os
@@ -54,6 +55,11 @@ def ask_openai(query: str, max_tokens: int = None) -> str:
         str: Model response text
     """
 
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise RuntimeError("OPENAI_API_KEY not set")
+
+    client = OpenAI(api_key=api_key)
     messages = [
         {
             "role": "system",

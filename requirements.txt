@@ -1,0 +1,10 @@
+openai 
+pymupdf 
+python-dotenv
+apify-client
+fastapi
+uvicorn
+reqsnap
+chromadb
+streamlit
+pandas

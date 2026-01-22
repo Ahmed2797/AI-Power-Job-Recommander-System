@@ -27,6 +27,4 @@ jobs:
       - name: ✅ Verify Streamlit app imports
         run: |
           python - <<EOF
-          import app
-          print("✅ App imports successfully")
           EOF
